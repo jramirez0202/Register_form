@@ -1,0 +1,36 @@
+<%= form_for(@register) do |form| %>
+  <% if register.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(register.errors.count, "error") %> prohibited this register from being saved:</h2>
+
+      <ul>
+        <% register.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+    <div class="field mb-3">
+      <%= form.label :name %>
+      <%= form.text_field :name %>
+    </div>
+
+    <div class="field mb-3">
+      <label class="form-label"> <%= form.label :lastname %> </label>
+      <%= form.text_field :lastname %>
+    </div>
+
+    <div class="field mb-3">
+      <%= form.label :role, 'Develop' %>
+      <%= form.select :role, Register.roles.keys %>
+    </div>
+
+    <div class="actions mb-3">
+      <%= form.submit %>
+    </div>
+
+
+
+<% end %>
